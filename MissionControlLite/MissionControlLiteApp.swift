@@ -32,8 +32,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupStatusBarItem() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         guard let button = statusItem?.button else { return }
-        button.image = NSImage(named: "MenuBarIcon")
-        button.image?.isTemplate = true
+        let icon = NSImage(named: "MenuBarIcon")
+        icon?.size = NSSize(width: 18, height: 18)
+        icon?.isTemplate = true
+        button.image = icon
         button.action = #selector(statusBarClicked(_:))
         button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         button.target = self
