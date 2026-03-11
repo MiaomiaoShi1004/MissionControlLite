@@ -142,6 +142,12 @@ class WindowManager {
         windows.removeAll { $0.pid == window.pid }
     }
 
+    /// Hide an entire app. Used by ⌘H on hover.
+    func hideApp(of window: WindowInfo) {
+        NSRunningApplication(processIdentifier: window.pid)?.hide()
+        windows.removeAll { $0.pid == window.pid }
+    }
+
     // MARK: - AX Helpers
 
     private func forEachAXWindow(in axApp: AXUIElement, body: (AXUIElement) -> Bool) {

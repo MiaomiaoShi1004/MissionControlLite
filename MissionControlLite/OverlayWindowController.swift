@@ -94,6 +94,12 @@ class OverlayWindowController: NSObject {
                 return nil
             }
 
+            // ⌘H → hide the hovered app
+            if flags.contains(.command), event.keyCode == 4 {
+                self.hideHoveredApp()
+                return nil
+            }
+
             return event
         }
     }
@@ -119,5 +125,13 @@ class OverlayWindowController: NSObject {
               let win = wm.windows.first(where: { $0.id == id })
         else { return }
         wm.quitApp(of: win)
+    }
+
+    private func hideHoveredApp() {
+        guard let wm = windowManager,
+              let id = wm.hoveredWindowID,
+              let win = wm.windows.first(where: { $0.id == id })
+        else { return }
+        wm.hideApp(of: win)
     }
 }

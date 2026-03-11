@@ -1,107 +1,70 @@
-# MissionControlLite
+# Mission Control Lite
 
-A lightweight macOS app that provides a Mission Control-style overlay for managing windows with keyboard shortcuts.
+A free, open-source alternative to [Mission Control Plus](https://www.fadel.io/missioncontrolplus) for macOS.
 
-## Features
+See all your open windows at a glance. Close them without switching apps. No subscription, no tracking, no nonsense.
 
-### Window Management
-- **View All Windows**: Display all open windows in an overlay view
-- **Quick Focus**: Click on any window thumbnail to bring it to focus
-- **Keyboard Shortcuts**: Manage windows efficiently with keyboard commands
+![macOS](https://img.shields.io/badge/macOS-14.0%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-### Keyboard Shortcuts
+## What it does
 
-When the overlay is active (after pressing `Ctrl+M` or your configured trigger):
+- Shows all open windows as thumbnails in a fullscreen overlay
+- **Close any window** by hovering and clicking the red ✕ (or pressing ⌘W)
+- **Quit any app** by hovering and pressing ⌘Q
+- **Hide any app** by hovering and pressing ⌘H ✨ *New!*
+- **Switch to a window** by clicking its thumbnail
+- Lives in your menu bar — no Dock icon, no clutter
 
-- **ESC** — Dismiss the overlay
-- **⌘W** — Close the hovered window
-- **⌘Q** — Quit the hovered application
-- **⌘H** — Hide the hovered application ✨ *New!*
+## Keyboard shortcuts
 
-## Requirements
+| Shortcut | Action |
+|----------|--------|
+| `⌃M` (Control + M) | Toggle overlay on/off |
+| `Esc` | Dismiss overlay |
+| `⌘W` | Close the window you're hovering |
+| `⌘Q` | Quit the app you're hovering |
+| `⌘H` | Hide the app you're hovering ✨ *New!* |
+| Click a thumbnail | Switch to that window |
+| Click empty space | Dismiss overlay |
 
-- macOS 13.0 (Ventura) or later
-- Swift 5.9+
-- Xcode 15.0+
+You can also click the menu bar icon to open the overlay, and right-click it to quit Mission Control Lite.
 
-## Installation
+## Install
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/MissionControlLite.git
-   cd MissionControlLite
-   ```
+### Option 1: Download the app (easiest)
 
-2. Open the project in Xcode:
-   ```bash
-   open MissionControlLite.xcodeproj
-   ```
+1. Go to [Releases](../../releases)
+2. Download `MissionControlLite.app.zip`
+3. Unzip and drag `MissionControlLite.app` into your `/Applications` folder
+4. Double-click to launch
 
-3. Build and run the project (`⌘R`)
+### Option 2: Build from source
 
-## Setup
+Requirements: macOS 14+ and Xcode 15+
 
-### Accessibility Permissions
+```bash
+git clone https://github.com/miaomiaoshi/MissionControlLite.git
+cd MissionControlLite
+xcodebuild -scheme MissionControlLite -configuration Release -derivedDataPath build
+cp -R build/Build/Products/Release/MissionControlLite.app /Applications/
+```
 
-MissionControlLite requires accessibility permissions to interact with other applications' windows.
+Then open it from `/Applications`.
 
-1. Open **System Settings** → **Privacy & Security** → **Accessibility**
-2. Add **MissionControlLite** to the list of allowed apps
-3. Enable the checkbox next to MissionControlLite
+## Permissions
 
-### Setting Up Global Hotkey
+On first launch, macOS will ask for two permissions:
 
-Configure your preferred global hotkey to trigger the overlay (e.g., `Ctrl+M`). This can be set up in the app preferences.
+1. **Accessibility** — needed to close/focus windows (System Settings → Privacy & Security → Accessibility)
+2. **Screen Recording** — needed to capture window thumbnails (System Settings → Privacy & Security → Screen Recording)
 
-## Usage
+Both are required for the app to work. Your data never leaves your Mac.
 
-1. Press your configured hotkey (e.g., `Ctrl+M`) to show the window overlay
-2. Hover over any window thumbnail to preview it
-3. Click to focus a window, or use keyboard shortcuts:
-   - **⌘W** to close the hovered window
-   - **⌘Q** to quit the hovered app
-   - **⌘H** to hide the hovered app
-4. Press **ESC** to dismiss the overlay
+## Uninstall
 
-## Technical Details
-
-### Architecture
-
-- **SwiftUI**: Modern declarative UI framework
-- **AppKit Integration**: Native window management using `NSRunningApplication` and Accessibility APIs
-- **Observable Pattern**: State management with Swift's `@Observable` macro
-- **Async/Await**: Efficient window enumeration with Swift Concurrency
-
-### Key Components
-
-- `OverlayWindowController`: Manages the floating overlay panel and keyboard event monitoring
-- `WindowManager`: Handles window enumeration, thumbnail capture, and window actions
-- `WindowThumbnailView`: SwiftUI view for displaying window thumbnails
-- `MissionControlView`: Main overlay interface
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+Drag `MissionControlLite.app` from `/Applications` to the Trash. Done.
 
 ## License
 
-[Your License Here]
-
-## Changelog
-
-### Version 1.1.0
-- ✨ Added **⌘H** keyboard shortcut to hide hovered applications
-- 🐛 Improved keyboard shortcut reliability with modifier flag handling
-
-### Version 1.0.0
-- Initial release with window management overlay
-- Keyboard shortcuts: ESC, ⌘W, ⌘Q
-- Window thumbnails and previews
-
-## Acknowledgments
-
-Inspired by macOS Mission Control and various window management utilities.
-
----
-
-**Note**: This app is not affiliated with or endorsed by Apple Inc.
+MIT — do whatever you want with it.
