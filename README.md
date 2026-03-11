@@ -12,6 +12,7 @@ See all your open windows at a glance. Close them without switching apps. No sub
 - Shows all open windows as thumbnails in a fullscreen overlay
 - **Close any window** by hovering and clicking the red ✕ (or pressing ⌘W)
 - **Quit any app** by hovering and pressing ⌘Q
+- **Hide any app** by hovering and pressing ⌘H ✨ *New!*
 - **Switch to a window** by clicking its thumbnail
 - Lives in your menu bar — no Dock icon, no clutter
 
@@ -23,6 +24,7 @@ See all your open windows at a glance. Close them without switching apps. No sub
 | `Esc` | Dismiss overlay |
 | `⌘W` | Close the window you're hovering |
 | `⌘Q` | Quit the app you're hovering |
+| `⌘H` | Hide the app you're hovering ✨ *New!* |
 | Click a thumbnail | Switch to that window |
 | Click empty space | Dismiss overlay |
 
