@@ -37,7 +37,12 @@ You can also click the menu bar icon to open the overlay, and right-click it to 
 1. Go to [Releases](../../releases)
 2. Download `MissionControlLite.app.zip`
 3. Unzip and drag `MissionControlLite.app` into your `/Applications` folder
-4. Double-click to launch
+4. If macOS shows "Apple could not verify" warning, open Terminal and run:
+   ```bash
+   xattr -cr /Applications/MissionControlLite.app
+   ```
+   This is normal for open-source apps not distributed through the App Store.
+5. Double-click to launch
 
 ### Option 2: Build from source
 
